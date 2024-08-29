@@ -1,0 +1,198 @@
+<!-- ! svg icon website 1.flaticon.com / svgrepo.com / storyset.com / undraw.co -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>My Todo App</title>
+    <meta name="title" content="My Todo App" />
+    <meta name="description" content="Church photo" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.youtube.com" />
+    <meta property="og:title" content="My Todo App" />
+    <meta property="og:description" content="Church photo" />
+    <meta
+      property="og:image"
+      content="https://effectivechurch.com/wp-content/uploads/2014/12/ChurchSmall.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.youtube.com" />
+    <meta property="twitter:title" content="My Todo App" />
+    <meta property="twitter:description" content="Church photo" />
+    <meta
+      property="twitter:image"
+      content="https://effectivechurch.com/wp-content/uploads/2014/12/ChurchSmall.jpgg"
+    />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+    <link rel="stylesheet" href="./output.css" />
+    <!-- <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  /> -->
+  </head>
+  <body class="bg-slate-400">
+    <main class="max-w-[400px] min-h-[500px] bg-slate-200 mx-auto mt-10 p-10">
+      <!-- TODO: Parent header -->
+      <header class="mb-5">
+        <h1 class="font-serif text-3xl font-bold text-stone-900">Task Lists</h1>
+      </header>
+
+      <!-- TODO: - parent section 1-->
+      <section class="mb-5 flex justify-between">
+        <input
+          id="taskInput"
+          class="flex-grow border font-mono border-stone-950 ps-3 focus-visible:outline-none"
+          type="text"
+        />
+        <button
+          id="addTaskBtn"
+          class="bg-stone-950 text-white size-12 flex justify-center items-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      </section>
+
+      <!-- TODO: - parent section 2 -->
+      <section class="">
+        <!-- FIXME: main div 1 -->
+        <div class="flex justify-between mb-3">
+          <h4 class="font-serif text-xl font-bold">Your List</h4>
+          <div
+            class="status bg-stone-950 text-xs text-white px-5 rounded-full flex justify-center items-center gap-1"
+          >
+            <span id="doneTaskTotal">0</span>
+            <span>/</span>
+            <span id="taskTotal">0</span>
+          </div>
+        </div>
+
+        <!-- FIXME: main div 2 -->
+        <div class="list-group mb-3" id="listGroup">
+          <!-- !empty stage flaticon.com-->
+          <div class="empty-stage last:block hidden">
+            <div class="flex justify-center flex-col items-center gap-3 mt-20">
+              <img src="./images/empty.svg" alt="" class="w-32" />
+              <p>There is no job yet.</p>
+            </div>
+          </div>
+          <!-- !list stage -->
+        </div>
+      </section>
+    </main>
+    <section class="flex justify-center items-center gap-3">
+      <button
+        id="deleteAll"
+        class="bg-stone-950 text-stone-50 font-serif px-4 py-2 flex mt-5 gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+          />
+        </svg>
+
+        Delete All
+      </button>
+
+      <button
+        id="doneAll"
+        class="bg-stone-950 text-stone-50 font-serif px-4 py-2 flex mt-5 gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m4.5 12.75 6 6 9-13.5"
+          />
+        </svg>
+
+        Done All
+      </button>
+    </section>
+    <template id="listTemplate">
+      <div class="list">
+        <div
+          class="border bg-white border-stone-950 flex p-3 flex justify-between mb-3 animate__animated animate__zoomIn"
+        >
+          <div class="flex gap-2 items-center">
+            <input type="checkbox" class="list-done-check accent-stone-950" />
+            <p class="font-mono list-task">${currentTask}</p>
+          </div>
+          <div class="control">
+            <button
+              class="list-edit-btn border border-stone-950 p-2 disabled:opacity-20"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 pointer-events-none"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                />
+              </svg>
+            </button>
+            <button
+              class="list-del-btn border border-stone-950 p-2 active:scale-90 duration-200 active:bg-blue-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 pointer-events-none"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
